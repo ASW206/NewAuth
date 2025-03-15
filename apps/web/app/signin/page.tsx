@@ -1,5 +1,5 @@
 "use client";
-import { signIn } from "../auth";
+import { signInWithCredentials } from "../auth/actions";
 import { googleSignin } from "../auth/actions";
 import { useState } from "react";
 export default function SigninPage() {
@@ -27,7 +27,7 @@ export default function SigninPage() {
         ></input>
         <button
           className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-pink-500 hover:cursor-pointer"
-          onClick={() => signIn("credentials", { email, password },{redirect:true} ,{ redirectTo : "/dashboard" })}
+          onClick={() => signInWithCredentials(email, password)}
         >
           Sign-In
         </button>

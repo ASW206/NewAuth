@@ -1,17 +1,17 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {};
-
-// export default nextConfig;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack: (config, { isServer }) => {
-      if (!isServer) {
-        config.resolve.fallback = { async_hooks: false };
+  images: {
+    remotePatterns:[
+      {
+        protocol:"https",
+        hostname:"**",
       }
-      return config;
-    },
-  };
-  
-  export default nextConfig;
-  
+    ]
+  }
+  // experimental: {
+  //   // turbo: true, // Disable if causing issues
+  //   serverComponentsExternalPackages: ["@prisma/client", "@auth/prisma-adapter"],
+  // },
+};
+
+export default nextConfig;

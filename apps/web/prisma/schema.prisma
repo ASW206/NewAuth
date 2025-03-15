@@ -1,3 +1,16 @@
+enum Team{
+  TEAM_A
+  TEAM_B
+}
+
+enum Role{
+  ADMIN
+  COADMIN
+  PLAYER
+  
+}
+
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -16,12 +29,17 @@ model User {
   accounts      Account[]
   sessions      Session[]
   password String?
+  game Game[]
+  
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+
+  
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
  
 model Account {
   userId            String
@@ -78,3 +96,21 @@ model Authenticator {
  
   @@id([userId, credentialID])
 }
+
+
+
+model Game{
+  id String @id @default(cuid())
+  userId String
+  role Role @default(PLAYER)
+  team String 
+  user User @relation(fields:[userId], references: [id], onDelete: Cascade)
+  //Game details
+  name String
+  description String?
+  image String?
+  price Float?
+}
+
+
+

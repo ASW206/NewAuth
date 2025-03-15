@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./db/prismaClient";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter:PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       credentials: {
@@ -22,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
         const dbPassword = user?.password;
-        if (!user||password !== dbPassword) {
+        if (!user || password !== dbPassword) {
           return null;
         }
         return user;
@@ -30,4 +30,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
     Google,
   ],
+  callbacks:{
+    async session({session,user}){
+      session.user.id =user.id;
+      return session;
+    }
+  }
+  
 });
+

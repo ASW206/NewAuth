@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import { env } from "process";
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +11,9 @@ export default function SignupPage() {
       email: email,
       password: password,
     });
+    
     setMsg(res.data.message);
+
     setTimeout(() => {
       return setMsg("");
     }, 4000);
