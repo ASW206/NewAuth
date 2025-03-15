@@ -19,7 +19,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-bl from-blue-700 to-gray-950 text-white font-mono">
-      <h1 className="fixed top-7 bg-pink-500 font-mono bg-clip-text text-transparent text-6xl">
+      <h1 className="fixed top-7 bg-black hover:bg-pink-500 font-mono bg-clip-text text-transparent text-6xl">
         Auth
       </h1>
 
@@ -41,12 +41,12 @@ export default function SignupPage() {
         ></input>
         <button
           onClick={signUp}
-          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:cursor-pointer"
+          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-pink-500 hover:cursor-pointer "
         >
           Sign-Up
         </button>
         <button
-          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:cursor-pointer"
+          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-pink-500 hover:cursor-pointer"
           onClick={googleSignUp}
         >
           Sign-Up With Google

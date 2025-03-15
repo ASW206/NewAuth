@@ -14,7 +14,7 @@ export async function sendVerificationEmail(email: string, token: string) {
 
   try {
     const info = await transporter.sendMail({
-      from: '"Your App Name" <jessepinkman0307@gmail.com>',
+      from: '"K_ASWIN___ABISHEK" <jessepinkman0307@gmail.com>',
       to: email,
       subject: "Verify Your Email",
       html: `

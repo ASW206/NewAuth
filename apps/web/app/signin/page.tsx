@@ -1,19 +1,15 @@
-"use client"
-import { useState } from "react";
+"use client";
 import { signIn } from "../auth";
-
-export default function SignInPage() {
+import { googleSignin } from "../auth/actions";
+import { useState } from "react";
+export default function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSignIn = async () => {
-    await signIn("credentials", { email, password });
-  };
-
+  
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-bl from-blue-700 to-gray-950 text-white font-mono">
-      <h1 className="fixed top-7 bg-pink-500 font-mono bg-clip-text text-transparent text-6xl">
-        Sign In
+      <h1 className="fixed top-7 bg-black hover:bg-pink-500 font-mono bg-clip-text text-transparent text-6xl">
+        Auth
       </h1>
 
       <div className="flex flex-col p-4 py-10 border border-gray-300 rounded-xl bg-black">
@@ -21,27 +17,26 @@ export default function SignInPage() {
         <input
           placeholder="Enter your email"
           className="border mt-4 p-3 rounded-lg"
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
-        />
+        ></input>
         <input
           placeholder="Enter your password"
           className="border mt-4 p-3 rounded-lg"
           type="password"
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+        ></input>
         <button
-          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:cursor-pointer"
-          onClick={handleSignIn}
+          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-pink-500 hover:cursor-pointer"
+          onClick={() => signIn("credentials", { email, password },{redirect:true} ,{ redirectTo : "/dashboard" })}
         >
-          Sign In
+          Sign-In
         </button>
         <button
-          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:cursor-pointer"
-          onClick={() => signIn("google")}
-        >
-          Sign In With Google
+          className="mt-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-pink-500 hover:cursor-pointer"
+          onClick={googleSignin}
+
+         >
+          Sign-In With Google
         </button>
       </div>
     </div>
